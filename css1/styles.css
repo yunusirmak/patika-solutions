@@ -1,0 +1,26 @@
+body {
+  text-align: center;
+  list-style-position: inside;
+}
+
+.nav a {
+  margin: 10px;
+}
+
+h1 {
+  color: red;
+}
+
+h2 {
+  color: purple;
+}
+
+h4 {
+  color: darkorange;
+}
+img {
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
