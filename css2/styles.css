@@ -1,0 +1,22 @@
+body {
+  text-align: center;
+}
+.search-field {
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: whitesmoke;
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: small;
+}
+.table {
+  margin-left: 20px;
+  margin-right: 20px;
+}
