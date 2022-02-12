@@ -1,11 +1,7 @@
-//get the unordered list that has the id of "list" and store all of the list items in a variable
-var list = document.getElementById("list").getElementsByTagName("li");
-console.log(list);
-let currentList = [];
-for (let i = 0; i <= list.length - 1; i++) {
-  currentList.push(list[i].innerHTML);
-}
-console.log(currentList);
+let currentList = localStorage.getItem("todo")
+  ? JSON.parse(localStorage.getItem("todo"))
+  : [];
+storedList();
 
 function newElement() {
   //get the current value of the input field and store it in a variable
@@ -13,16 +9,35 @@ function newElement() {
   if (input === "") {
     alert("Please enter a task");
   } else {
-    //create a new li element
-    var li = document.createElement("li");
-    //add the value of the input variable to the li element
-    li.innerHTML = input;
-    //add the li element to the list
-    document.getElementById("list").appendChild(li);
-    //add the input value to the array
     currentList.push(input);
-    console.log(currentList);
+    localStorage.setItem("todo", JSON.stringify(currentList));
+    storedList();
     //clear the input field
-    document.getElementById("input").value = "";
+    document.getElementById("task").value = "";
   }
+}
+
+function storedList() {
+  let newLi = [];
+  if (currentList.length != 0) {
+    currentList.forEach((element, index) => {
+      newLi += `<li onClick="checkItem(${index})">${element}<button class="delete" onClick="deleteItem(${index})">x</button></li>`;
+    });
+  }
+  document.getElementById("list").innerHTML = newLi;
+}
+
+function deleteItem(index) {
+  currentList.splice(index, 1);
+  localStorage.setItem("todo", JSON.stringify(currentList));
+  storedList();
+}
+
+//when clicked, add a class called checked to the li and remove the class if it gets clicked again
+function checkItem(index) {
+  let list = document.getElementById("list");
+  let listItems = list.getElementsByTagName("li");
+  listItems[index].classList.toggle("checked");
+  console.log(listItems);
+  console.log(currentList);
 }
