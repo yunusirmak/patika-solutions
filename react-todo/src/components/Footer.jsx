@@ -1,23 +1,41 @@
-function Footer() {
+function Footer({ itemCount, selected, onSelect, clearCompleted }) {
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>0</strong> items left
+        <strong>{itemCount}</strong> items left
       </span>
       <ul className="filters">
         <li>
-          <a href="#/" className="selected">
+          <a
+            href="#/"
+            className={selected === "all" ? "selected" : ""}
+            onClick={() => onSelect("all")}
+          >
             All
           </a>
         </li>
         <li>
-          <a href="#/">Active</a>
+          <a
+            href="#/"
+            className={selected === "active" ? "selected" : ""}
+            onClick={() => onSelect("active")}
+          >
+            Active
+          </a>
         </li>
         <li>
-          <a href="#/">Completed</a>
+          <a
+            href="#/"
+            className={selected === "completed" ? "selected" : ""}
+            onClick={() => onSelect("completed")}
+          >
+            Completed
+          </a>
         </li>
       </ul>
-      <button className="clear-completed">Clear completed</button>
+      <button onClick={() => clearCompleted()} className="clear-completed">
+        Clear completed
+      </button>
     </footer>
   );
 }
