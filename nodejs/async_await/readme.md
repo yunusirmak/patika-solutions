@@ -26,6 +26,7 @@ const promise1 = new Promise((resolve, reject) => {
 ## What is Async-Await?
 The Async - Await structure came with ES8 and is the Promise structure written with a more understandable syntax. If a function is declared with the async keyword, a Promise is returned as a result of the positive result of the function. If an async function is used with the await keyword, the execution of the async function is suspended until the corresponding Promise returns positive.
 <br/>
+
  ***code:***
 ```javascript
 function getData(data) {
